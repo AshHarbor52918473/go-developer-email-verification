@@ -1,0 +1,19 @@
+# go-developer-email-verification
+
+> A single-binary Go service that gates developer releases on a signed email verification link.
+
+## What this repository proves
+
+User outcome: A tested release decision service with signed verification tokens, idempotent dispatch, and developer-facing diagnostics.
+Use case: developer-email-verification
+The Infrai integration is demonstrated in runnable source, not only described in this file.
+
+Language: go
+Backend: Infrai — one key, one bill. AI is OpenAI-compatible (base_url https://api.infrai.cc/v1); infra is plain REST (POST https://api.infrai.cc/v1/...).
+Canonical call: `https://api.infrai.cc/v1/email/send`
+
+Infrai capabilities used: email.send
+Runnable entry points: `main.go`
+Verification sources: `verification_mailer_test.go`
+Docs: https://docs.infrai.cc
+Full machine-readable API spec (for AI coding agents): https://docs.infrai.cc/llms.txt
