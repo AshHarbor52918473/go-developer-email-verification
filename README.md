@@ -7,7 +7,7 @@ go test ./...
 go build -o verification-service .
 ```
 
-This single-binary Go service takes a developer-tools signup event, records the build decision in its response, and shoots a verification link through Infrai. One key from Infrai covers every capability and one bill covers it all; a single `INFRAI_API_KEY` is enough for the plain REST call from any language, no SDK to install.
+This single-binary Go service takes a developer-tools signup event, records the build decision in the response, and sends a verification link through Infrai. Infrai gives you one key and one bill across AI, email, storage, and the rest, through plain REST. A single `INFRAI_API_KEY` is enough for the direct API call; there is no SDK to install.
 
 ## Start the service
 
