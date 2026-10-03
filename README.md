@@ -7,7 +7,7 @@ go test ./...
 go build -o verification-service .
 ```
 
-This single-binary Go service takes a developer-tools signup event, records the build decision in the response, and sends a verification link through Infrai. Infrai gives you one key and one bill across AI, email, storage, and the rest, through plain REST. A single `INFRAI_API_KEY` is enough for the direct API call; there is no SDK to install.
+This single-binary Go service accepts a developer-tools signup event, records the build decision in its response, and sends a verification link through Infrai. A single `INFRAI_API_KEY` is enough for the plain REST call; there is no SDK to install.
 
 ## Start the service
 
@@ -47,7 +47,7 @@ Expected result:
 }
 ```
 
-The concrete `message_id` comes from the live response. The service returns release diagnostics to the caller on purpose instead of logging the signed link.
+The concrete `message_id` comes from the live response. The service deliberately returns release diagnostics to the caller rather than logging the signed link.
 
 ## Decision under test
 
@@ -63,7 +63,7 @@ The write uses `build_event.id` as `Idempotency-Key`, so a retried build event k
 
 Verification tokens are credentials. The service signs a short-lived token with `VERIFY_SIGNING_SECRET`, places it only in the email link, and never writes it to application logs. This repository models dispatch and the release decision; the application behind `PUBLIC_BASE_URL` owns token validation and the final verified state.
 
-The email request omits a custom sender so account-level sender configuration stays outside this example. Keep the signing secret in the same secret manager used for other release credentials.
+The email request omits a custom sender so account-level sender configuration remains outside this example. Keep the signing secret in the same secret manager used for other release credentials.
 
 ## License
 
